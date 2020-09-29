@@ -18,7 +18,7 @@ class CryptoRepository extends BaseCryptoRepository {
   Future<List<Coin>> getTopCoins({int page}) async {
     List<Coin> coins = [];
     String requestUrl =
-        '$_baseUrl/data/top/totalvolfull?limit=$_perPage&tysm=USD&page=$page';
+        '$_baseUrl/data/top/totalvolfull?limit=$_perPage&tsym=USD&page=$page';
 
     try {
       final response = await _httpClient.get(requestUrl);
