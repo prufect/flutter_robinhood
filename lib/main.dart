@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_robinhood/screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,10 +13,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.black,
+        accentColor: Colors.tealAccent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(),
+      home: HomeScreen(),
     );
   }
 }
