@@ -13,7 +13,7 @@ class Coin extends Equatable {
   });
 
   @override
-  List<Object> get props => throw [
+  List<Object> get props => [
         name,
         fullName,
         price,

@@ -8,6 +8,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _scrollController = ScrollController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,40 +45,45 @@ class _HomeScreenState extends State<HomeScreen> {
         onRefresh: () async {
           context.bloc<CryptoBloc>().add(RefreshCoins());
         },
-        child: ListView.builder(
-          itemCount: state.coins.length,
-          itemBuilder: (BuildContext context, int index) {
-            final coin = state.coins[index];
-            return ListTile(
-              leading: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "${++index}",
-                    style: TextStyle(
-                      color: Theme.of(context).accentColor,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  )
-                ],
-              ),
-              title: Text(
-                coin.fullName,
-                style: TextStyle(color: Colors.white),
-              ),
-              subtitle: Text(
-                coin.name,
-                style: TextStyle(color: Colors.white70),
-              ),
-              trailing: Text(
-                "\$${coin.price.toStringAsFixed(4)}",
-                style: TextStyle(
-                  color: Theme.of(context).accentColor,
-                  fontWeight: FontWeight.w600,
+        child: NotificationListener<ScrollNotification>(
+          onNotification: (notification) =>
+              _onScrollNotification(notification, state),
+          child: ListView.builder(
+            controller: _scrollController,
+            itemCount: state.coins.length,
+            itemBuilder: (BuildContext context, int index) {
+              final coin = state.coins[index];
+              return ListTile(
+                leading: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "${++index}",
+                      style: TextStyle(
+                        color: Theme.of(context).accentColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    )
+                  ],
                 ),
-              ),
-            );
-          },
+                title: Text(
+                  coin.fullName,
+                  style: TextStyle(color: Colors.white),
+                ),
+                subtitle: Text(
+                  coin.name,
+                  style: TextStyle(color: Colors.white70),
+                ),
+                trailing: Text(
+                  "\$${coin.price.toStringAsFixed(4)}",
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              );
+            },
+          ),
         ),
       );
     } else if (state is CryptoError) {
@@ -90,5 +97,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
     }
+  }
+
+  bool _onScrollNotification(ScrollNotification notif, CryptoLoaded state) {
+    if (notif is ScrollEndNotification &&
+        _scrollController.position.extentAfter == 0) {
+      context.bloc<CryptoBloc>().add(LoadMoreCoins(coins: state.coins));
+    }
+
+    return false;
   }
 }
