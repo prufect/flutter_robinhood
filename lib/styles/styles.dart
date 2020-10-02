@@ -20,6 +20,7 @@ class Styles {
     fontSize: 36.0,
   );
 
+  // ignore: non_constant_identifier_names
   static final TextStyle textstyle_subheaderPositive = TextStyle(
     color: color_positive,
     fontFamily: fontFamily,
@@ -27,6 +28,7 @@ class Styles {
     fontSize: 16.0,
   );
 
+  // ignore: non_constant_identifier_names
   static final TextStyle textstyle_appbar_title = TextStyle(
     color: color_text,
     fontFamily: fontFamily,
@@ -34,6 +36,7 @@ class Styles {
     fontSize: 16.0,
   );
 
+  // ignore: non_constant_identifier_names
   static final TextStyle textstyle_appbar_subtitle = TextStyle(
     color: color_textAlternate,
     fontFamily: fontFamily,
