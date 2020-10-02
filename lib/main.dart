@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_robinhood/repositories/crypto_respository.dart';
 import 'package:flutter_robinhood/screens/home_screen.dart';
+import 'package:flutter_robinhood/styles/styles.dart';
 
 import 'blocs/crypto/crypto_bloc.dart';
 
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primaryColor: Colors.black,
           accentColor: Colors.tealAccent,
+          fontFamily: Styles.fontFamily,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: HomeScreen(),

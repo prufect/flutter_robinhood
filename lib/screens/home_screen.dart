@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_robinhood/blocs/crypto/crypto_bloc.dart';
+import 'package:flutter_robinhood/styles/styles.dart';
+import 'package:flutter_robinhood/widgets/free_stock_button.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -28,7 +31,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 opacity: _offset > 50 ? 1 : 0,
                 duration: Duration(milliseconds: 300),
                 curve: Curves.easeOutQuad,
-                child: Text("Robinhood"),
+                child: Column(
+                  children: [
+                    Text(
+                      "\$5,611.81",
+                      style: Styles.textstyle_appbar_title,
+                    ),
+                    Text(
+                      "Investing",
+                      style: Styles.textstyle_appbar_subtitle,
+                    )
+                  ],
+                ),
               ),
               elevation: 0,
               pinned: true,
@@ -49,64 +63,51 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               Text(
                                 "Investing",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 24.0,
-                                ),
+                                style: Styles.textstyle_header,
                               ),
-                              FlatButton.icon(
-                                color: Colors.greenAccent,
-                                onPressed: () {},
-                                icon: Icon(
-                                  CupertinoIcons.gift,
-                                  color: Colors.white,
-                                ),
-                                label: Text(
-                                  "Free Stock",
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
+                              FreeStockButton(),
                             ],
                           ),
                           Text(
                             "\$5,611.81",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24.0,
-                            ),
+                            style: Styles.textstyle_header,
                           ),
                           SizedBox(height: 20),
                           Row(
                             children: [
                               Icon(
-                                CupertinoIcons.arrow_up_right,
-                                color: Colors.green,
+                                MdiIcons.arrowTopRight,
+                                color: Styles.color_positive,
+                                size: 20,
+                              ),
+                              SizedBox(
+                                width: 4.0,
                               ),
                               Text(
                                 "\$15.76 (0.28%)",
-                                style: TextStyle(color: Colors.green),
+                                style: Styles.textstyle_subheaderPositive,
                               ),
                               SizedBox(width: 8.0),
                               Text(
                                 "Today",
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Styles.color_text),
                               ),
                             ],
                           ),
                           Row(
                             children: [
                               Icon(
-                                CupertinoIcons.arrow_up_right,
+                                MdiIcons.arrowTopRight,
                                 color: Colors.green,
                               ),
                               Text(
                                 "\$12.57 (0.22%)",
-                                style: TextStyle(color: Colors.green),
+                                style: Styles.textstyle_subheaderPositive,
                               ),
                               SizedBox(width: 8.0),
                               Text(
                                 "After-Hours",
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Styles.color_text),
                               ),
                             ],
                           ),
@@ -115,6 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Expanded(
                       child: Container(
+                        color: Colors.blue,
                         child: Center(
                           child: Text("Graph",
                               style: TextStyle(color: Colors.white)),
