@@ -5,6 +5,13 @@ import 'package:flutter_robinhood/graph_data.dart';
 import 'package:flutter_robinhood/styles/styles.dart';
 
 class LineChartSample2 extends StatefulWidget {
+  final int selected;
+
+  const LineChartSample2({
+    Key key,
+    this.selected = 0,
+  }) : super(key: key);
+
   @override
   _LineChartSample2State createState() => _LineChartSample2State();
 }
@@ -14,6 +21,11 @@ class _LineChartSample2State extends State<LineChartSample2> {
     Styles.color_positive,
     Styles.color_positive,
   ];
+
+  List<double> minXs = [30, 25, 20, 15, 10, 10];
+  List<double> maxXs = [40, 45, 50, 55, 60, 65];
+  List<double> minYs = [100, 90, 80, 70, 60, 80];
+  List<double> maxYs = [130, 132, 135, 137, 139, 130];
 
   bool showAvg = false;
 
@@ -43,24 +55,6 @@ class _LineChartSample2State extends State<LineChartSample2> {
         ),
       ),
     );
-    // SizedBox(
-    //   width: 60,
-    //   height: 34,
-    //   child: FlatButton(
-    //     onPressed: () {
-    //       setState(() {
-    //         showAvg = !showAvg;
-    //       });
-    //     },
-    //     child: Text(
-    //       'avg',
-    //       style: TextStyle(
-    //           fontSize: 12,
-    //           color:
-    //               showAvg ? Colors.white.withOpacity(0.5) : Colors.white),
-    //     ),
-    //   ),
-    // ),
   }
 
   LineChartData mainData() {
@@ -128,10 +122,10 @@ class _LineChartSample2State extends State<LineChartSample2> {
       borderData: FlBorderData(
           show: false,
           border: Border.all(color: const Color(0xff37434d), width: 1)),
-      minX: 0,
-      maxX: 50,
-      minY: 80,
-      maxY: 140,
+      minX: minXs[widget.selected],
+      maxX: maxXs[widget.selected],
+      minY: minYs[widget.selected],
+      maxY: maxYs[widget.selected],
       lineBarsData: [
         LineChartBarData(
           spots: graphData

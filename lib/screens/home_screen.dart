@@ -15,6 +15,42 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final _scrollController = ScrollController();
   double _offset = 0;
+  List<bool> _selections = [
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+
+  _graphOption(String text, int index) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selections = _selections.map((_) => false).toList();
+          _selections[index] = true;
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color:
+              _selections[index] ? Styles.color_positive : Colors.transparent,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(8.0, 6.0, 8.0, 6.0),
+          child: Text(
+            text,
+            style: TextStyle(
+                color:
+                    _selections[index] ? Colors.black : Styles.color_positive,
+                fontWeight: FontWeight.w900),
+          ),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,6 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Icon(
                                 MdiIcons.arrowTopRight,
                                 color: Colors.green,
+                                size: 20,
                               ),
                               Text(
                                 "\$12.57 (0.22%)",
@@ -116,11 +153,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Expanded(
-                      child: Container(
-                          decoration: BoxDecoration(
-                              // border: Border.all(color: Colors.white),
-                              ),
-                          child: LineChartSample2()),
+                      child: LineChartSample2(
+                        selected: _selections.indexWhere((e) => e == true),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0.0, 4.0, 0, 4.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          _graphOption("1D", 0),
+                          _graphOption("1W", 1),
+                          _graphOption("1M", 2),
+                          _graphOption("3M", 3),
+                          _graphOption("1Y", 4),
+                          _graphOption("ALL", 5),
+                        ],
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),

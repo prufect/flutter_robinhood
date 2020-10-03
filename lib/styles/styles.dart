@@ -24,7 +24,8 @@ class Styles {
   static final TextStyle textstyle_subheaderPositive = TextStyle(
     color: color_positive,
     fontFamily: fontFamily,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w800,
+    letterSpacing: -0.5,
     fontSize: 16.0,
   );
 
@@ -41,6 +42,12 @@ class Styles {
     color: color_textAlternate,
     fontFamily: fontFamily,
     fontWeight: FontWeight.w300,
+    fontSize: 16.0,
+  );
+
+  static final TextStyle textstyle_graphOption = TextStyle(
+    fontFamily: fontFamily,
+    fontWeight: FontWeight.w900,
     fontSize: 16.0,
   );
 }
