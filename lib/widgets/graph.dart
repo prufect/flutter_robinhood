@@ -1,5 +1,4 @@
-import 'dart:math';
-
+import 'package:dotted_line/dotted_line.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_robinhood/graph_data.dart';
@@ -20,40 +19,48 @@ class _LineChartSample2State extends State<LineChartSample2> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        AspectRatio(
-          aspectRatio: 2,
-          child: Container(
-            child: Padding(
-              padding:
-                  const EdgeInsets.only(right: 0, left: 0, top: 24, bottom: 12),
-              child: LineChart(
-                showAvg ? avgData() : mainData(),
+    return AspectRatio(
+      aspectRatio: 2,
+      child: Container(
+        child: Padding(
+          padding:
+              const EdgeInsets.only(right: 0, left: 0, top: 24, bottom: 12),
+          child: Stack(
+            children: [
+              LineChart(
+                mainData(),
               ),
-            ),
+              Center(
+                child: DottedLine(
+                  dashColor: Colors.grey,
+                  dashRadius: 10,
+                  dashLength: 3,
+                  dashGapLength: 8,
+                ),
+              )
+            ],
           ),
         ),
-        // SizedBox(
-        //   width: 60,
-        //   height: 34,
-        //   child: FlatButton(
-        //     onPressed: () {
-        //       setState(() {
-        //         showAvg = !showAvg;
-        //       });
-        //     },
-        //     child: Text(
-        //       'avg',
-        //       style: TextStyle(
-        //           fontSize: 12,
-        //           color:
-        //               showAvg ? Colors.white.withOpacity(0.5) : Colors.white),
-        //     ),
-        //   ),
-        // ),
-      ],
+      ),
     );
+    // SizedBox(
+    //   width: 60,
+    //   height: 34,
+    //   child: FlatButton(
+    //     onPressed: () {
+    //       setState(() {
+    //         showAvg = !showAvg;
+    //       });
+    //     },
+    //     child: Text(
+    //       'avg',
+    //       style: TextStyle(
+    //           fontSize: 12,
+    //           color:
+    //               showAvg ? Colors.white.withOpacity(0.5) : Colors.white),
+    //     ),
+    //   ),
+    // ),
   }
 
   LineChartData mainData() {
@@ -153,7 +160,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
     return LineChartData(
       lineTouchData: LineTouchData(enabled: false),
       gridData: FlGridData(
-        show: true,
+        show: false,
         drawHorizontalLine: true,
         getDrawingVerticalLine: (value) {
           return FlLine(
@@ -169,7 +176,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
         },
       ),
       titlesData: FlTitlesData(
-        show: true,
+        show: false,
         bottomTitles: SideTitles(
           showTitles: true,
           reservedSize: 22,
@@ -191,7 +198,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
           margin: 8,
         ),
         leftTitles: SideTitles(
-          showTitles: true,
+          showTitles: false,
           textStyle: const TextStyle(
             color: Color(0xff67727d),
             fontWeight: FontWeight.bold,

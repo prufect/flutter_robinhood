@@ -32,6 +32,7 @@ dependencies:
   http: ^0.12.2
   material_design_icons_flutter: ^4.0.5655
   fl_chart: ^0.11.1
+  dotted_line: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -72,3 +73,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
