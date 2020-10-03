@@ -5,6 +5,7 @@ import 'package:flutter_robinhood/blocs/crypto/crypto_bloc.dart';
 import 'package:flutter_robinhood/styles/styles.dart';
 import 'package:flutter_robinhood/widgets/free_stock_button.dart';
 import 'package:flutter_robinhood/widgets/graph.dart';
+import 'package:flutter_robinhood/widgets/graph_row.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -313,7 +314,90 @@ class _HomeScreenState extends State<HomeScreen> {
                   )
                 ],
               ),
-            )
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Text(
+                  "Stocks",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return Column(
+                    children: [
+                      SizedBox(height: 8.0),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 8),
+                        child: Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "SNOW",
+                                  style: Styles.textstyle_appbar_title,
+                                ),
+                                SizedBox(
+                                  height: 4.0,
+                                ),
+                                Text(
+                                  "5 Shares",
+                                  style: Styles.textstyle_appbar_subtitle,
+                                )
+                              ],
+                            ),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 60.0, right: 20),
+                                child: LineChartSample3(),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Styles.color_positive,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 12.0, vertical: 8.0),
+                                child: Text(
+                                  "\$260.30",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 15),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 8.0,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Divider(
+                          height: 1,
+                          color: Colors.grey[800],
+                        ),
+                      )
+                    ],
+                  );
+                },
+                childCount: 10,
+              ),
+            ),
           ],
         ),
       ),

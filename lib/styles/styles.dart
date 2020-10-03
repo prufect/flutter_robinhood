@@ -34,7 +34,7 @@ class Styles {
   static final TextStyle textstyle_appbar_title = TextStyle(
     color: color_text,
     fontFamily: fontFamily,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
     fontSize: 16.0,
   );
 
