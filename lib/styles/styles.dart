@@ -9,6 +9,7 @@ class Styles {
   static const Color color_positive = const Color(0xFF01C807);
   static const Color color_negative = const Color(0xFFFE4F04);
   static const Color color_positiveAccent = const Color(0xFF041F13);
+  static const Color color_backgroundAccent = const Color(0xFF31373A);
 
   static const String fontFamily = "Avenir";
 

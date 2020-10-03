@@ -210,6 +210,109 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
+            ),
+            SliverToBoxAdapter(
+              child: Stack(
+                children: [
+                  Container(
+                    height: 200,
+                    color: Styles.color_backgroundAccent.withOpacity(0.5),
+                    child: Padding(
+                      padding: const EdgeInsets.all(6.0),
+                      child: Container(
+                        color: Styles.color_background,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            children: [
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 2.0),
+                                    child: Icon(
+                                      MdiIcons.newspaper,
+                                      color: Colors.grey[700],
+                                      size: 22,
+                                    ),
+                                  ),
+                                  SizedBox(width: 8.0),
+                                  Text(
+                                    "Benzinga",
+                                    style: TextStyle(
+                                        color: Colors.grey[700],
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                  SizedBox(width: 6.0),
+                                  Text(
+                                    "11h",
+                                    style: TextStyle(
+                                        color: Colors.grey[700],
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 18),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                height: 12.0,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "Walmart Triples Tesla Semi Order In Canada",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 8,
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "View Article",
+                                    style: TextStyle(
+                                        color: Styles.color_positive,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w900),
+                                  ),
+                                  SizedBox(width: 2),
+                                  Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    color: Styles.color_positive,
+                                    size: 20,
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 2,
+                    right: 2,
+                    child: Container(
+                      height: 36,
+                      width: 36,
+                      decoration: BoxDecoration(
+                        color: Styles.color_positive,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Center(
+                        child: Text(
+                          "6",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),
