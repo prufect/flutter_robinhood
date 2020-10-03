@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_robinhood/blocs/crypto/crypto_bloc.dart';
 import 'package:flutter_robinhood/styles/styles.dart';
 import 'package:flutter_robinhood/widgets/free_stock_button.dart';
+import 'package:flutter_robinhood/widgets/graph.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SliverToBoxAdapter(
               child: Container(
-                height: 400,
+                height: 420,
                 color: Theme.of(context).primaryColor,
                 child: Column(
                   children: [
@@ -116,12 +117,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Expanded(
                       child: Container(
-                        color: Colors.blue,
-                        child: Center(
-                          child: Text("Graph",
-                              style: TextStyle(color: Colors.white)),
-                        ),
-                      ),
+                          decoration: BoxDecoration(
+                              // border: Border.all(color: Colors.white),
+                              ),
+                          child: LineChartSample2()),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
