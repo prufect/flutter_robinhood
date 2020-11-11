@@ -159,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(0.0, 4.0, 0, 4.0),
+                      padding: const EdgeInsets.fromLTRB(0.0, 4.0, 0, 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -177,7 +177,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Column(
                         children: [
                           Divider(
-                            color: Colors.white,
+                            color: Colors.white.withOpacity(0.5),
                           ),
                           SizedBox(height: 10),
                           Row(
